@@ -6,3 +6,45 @@ body {
 a {
   color: #00B7FF;
 }
+.panel-heading {
+  margin-top: 10px;
+  background-color: #337ab7;
+}
+.btn-primary{
+  background-image: linear-gradient(to bottom,#337ab7 0,#337ab7 100%);
+}
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 2px;
+  }
+}
+body{
+  padding-top: 0px;
+}
+.navbar-default{
+  margin-bottom: 50px;
+}
+.list-group-item{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.carousel-inner
+{
+  overflow:inherit;
+  margin-left: 30%;
+}
+input,
+button,
+select,
+textarea{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: #5bc0de;
+}
+.btn-primary{
+  margin-bottom: 10px;
+}

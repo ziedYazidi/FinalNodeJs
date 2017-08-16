@@ -1,0 +1,107 @@
+extends layout
+block content
+    // Button trigger modal
+    button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModalHorizontal')
+        | Add task
+    // Modal
+    input#myInput(type='text', onkeyup='myFunction()', placeholder='Search ...')
+    #myModalHorizontal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                // Modal Header
+                .modal-header
+                    button.close(type='button', data-dismiss='modal')
+                        span(aria-hidden='true') ×
+                        span.sr-only Close
+                    h4#myModalLabel.modal-title
+                        | New task
+                // Modal Body
+                .modal-body
+                    .form-group
+                        fieldset
+                            legend Title
+                        .col-10
+                            input#titleInput.form-control(type='text', value='')
+                    .form-group
+                        fieldset
+                            legend Date
+                        .col-10
+                            input#dateInput.form-control(type='date', value='2017-06-19')
+                    .form-group
+                        fieldset
+                            legend Description
+                        textarea#descriptionInput.form-control(rows='3')
+                // Modal Footer
+                .modal-footer
+                    button.btn.btn-default#Close(type='button', data-dismiss='modal')
+                        | Close
+                    button.btn.btn-primary#SaveChangesButton(type='button')
+                        | Save changes
+    #myModalHorizontal2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                // Modal Header
+                .modal-header
+                    button.close(type='button', data-dismiss='modal')
+                        span(aria-hidden='true') ×
+                        span.sr-only Close
+                    h4#myModalLabel2.modal-title
+                        | New task
+                // Modal Body
+                .modal-body
+                    .form-group
+                        fieldset
+                            legend Title
+                        .col-10
+                            input#titleInput2.form-control(type='text', value='')
+                    .form-group
+                        fieldset
+                            legend Date
+                        .col-10
+                            input#dateInput2.form-control(type='date', value='2017-06-19')
+                    .form-group
+                        fieldset
+                            legend Description
+                        textarea#descriptionInput2.form-control(rows='3')
+                // Modal Footer
+                .modal-footer
+                    button.btn.btn-default#Close2(type='button', data-dismiss='modal')
+                        | Close
+                    button.btn.btn-primary#SaveChangesButton2(type='button')
+                        | Save changes
+    .panel-heading
+        span.glyphicon.glyphicon-list
+    .list-group
+        ul.list-group#myUL
+
+    .panel-footer
+        .row
+            .col-md-6
+                h6
+                    | Total Count
+                    span.label.label-info#totalCount
+            .col-md-6
+                ul.pagination.pagination-sm.pull-right
+                    li.disabled
+                        a(href='javascript:void(0)') «
+                    li.active
+                        a(href='javascript:void(0)')
+                            | 1
+                            span.sr-only (current)
+                    li
+                        a(href='http://www.jquery2dotnet.com') 2
+                    li
+                        a(href='http://www.jquery2dotnet.com') 3
+                    li
+                        a(href='http://www.jquery2dotnet.com') 4
+                    li
+                        a(href='http://www.jquery2dotnet.com') 5
+                    li
+                        a(href='javascript:void(0)') »
+
+
+
+
+block end
+    script(src='/javascripts/tasks.js')
+    script(src='/javascripts/search.js')
