@@ -38,6 +38,9 @@ app.get('/', routes.index);
 app.get('/tasks',function (req,res) {
   res.render('tasks');
 });
+app.get('/current',function (req,res) {
+  res.render('current');
+});
 
 //Functions
 function getData() {
@@ -63,9 +66,36 @@ function getData() {
   });
 }
 
+function getCurrentdata(){
+  mongo.connect('mongodb://zytododb:KYnL6Fy4uTAqwFKFid2srWmD9aqJyXhbhOWXA1ROwAPpmB5e2953yJmHT6rC30deQTgOuaQVPpg1hmqfNM4jXA==@zytododb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb',function (err,db) {
+    if(err)
+    {
+      console.warn(err.message);
+    }
+    else
+    {
+      var date = new Date();
+      var month = date.getUTCMonth() + 1; //months from 1-12
+      var day = date.getUTCDate();
+      var year = date.getUTCFullYear();
+      if(month.length!=2)
+        month="0"+month;
+      var newdate = year+"-"+month+"-"+day;
+      db.collection("ToDoList").find({date:newdate}).toArray(function(err, result) {
+        if (err) throw err;
+        db.collection("ToDoList").find({date:newdate}).count(function (erreur, number) {
+          if(erreur) throw  erreur;
+          socket.emit('currentData',result,number);
+        });
+        db.close();
+      });
+    }
+  })
+}
 io.on('connection',function (socket) {
   console.log('user connected');
   getData();
+  getCurrentdata();
   socket.on('save',function(Title,date,description) {
     // Get data from Database
 
