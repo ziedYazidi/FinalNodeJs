@@ -43,7 +43,7 @@ $('#TrashButton').click(function () {
 socket.on('data',function (result,number) {
     $.each(result, function(i, obj) {
         $('#myUL').append('<li>'+
-                                '<a class="list-group-item" id="DocumentsItem" type="button">'+'Title : '+obj.Title+ 'Date : '+obj.date+ ', Description : '+obj.description+
+                                '<a class="list-group-item" id="DocumentsItem" type="button">'+'Title : '+obj.Title+ ', Date : '+obj.date+ ', Description : '+obj.description+
                                 '<div class="pull-right action-buttons">'+
                                     '<button id="PencilButton" data-toggle="modal" data-target="#myModalHorizontal">' +
                                         '<span class="glyphicon glyphicon-pencil"></span></button>'+

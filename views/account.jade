@@ -1,0 +1,12 @@
+extends  layout
+
+block content
+    if !user
+        h2 Welcome! Please log in.
+        a(href='/login') Log In
+    else
+        p= user._json.upn
+        p= user.id
+        p Full Claimes
+        a(href='/logout') Log Out
+        JSON.stringify(user)

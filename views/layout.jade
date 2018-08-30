@@ -35,17 +35,21 @@ html
                         li#allTasks
                             a(href='/tasks') All tasks
                     ul.nav.navbar-nav.navbar-right
-                        li.Profile
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                | Profile
-                                span.caret
-                            ul.dropdown-menu
-                                li
-                                    a(href='#') Modify
+                        if !user
+                            li#login
+                                a(href='/login') Log In
+                        if user
+                            li.Profile
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                    | Profile
+                                    span.caret
+                                ul.dropdown-menu
+                                    li
+                                        a(href='#') Modify
 
-                                li.divider(role='separator')
-                                li
-                                    a(href='#') Deconnexion
+                                    li.divider(role='separator')
+                                    li
+                                        a(href='/logout') Deconnexion
                 // /.navbar-collapse
             // /.container-fluid
     block content
